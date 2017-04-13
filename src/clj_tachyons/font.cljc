@@ -3,10 +3,10 @@
     [clojure.string :as str]
     [clojure.spec :as s]))
 
+(s/def ::breakpoints #{:all :not-small :medium :large})
+
 (def is-int? #{1 2 3 4 5 6 7})
 (def is-hero? #{:headline :subheadline})
-
-(s/def ::breakpoints #{:all :not-small :medium :large})
 
 (s/def ::int-sizes is-int?)
 (s/def ::hero-sizes is-hero?)
@@ -19,14 +19,20 @@
 (s/def ::medium ::sizes)
 (s/def ::large ::sizes)
 
-(s/def ::font
+(s/def ::size
   (s/or :font-size ::sizes
         :breakpoints (s/keys :opt-un [::all ::not-small ::medium ::large])))
 
-(s/valid? ::font :headline)
-(s/valid? ::font 1)
-(s/conform ::font 1)
-(s/conform ::font {:all 1
+(s/def ::measure #{:narrow :medium :wide})
+
+(s/def ::options #{:indent :measure :small-caps :truncate})
+
+(s/def ::configuration (s/keys :opt-un [::size ::measure ::options]))
+
+(s/valid? ::size :headline)
+(s/valid? ::size 1)
+(s/conform ::size 1)
+(s/conform ::size {:all 1
                    :not-small 3})
 
 (defn breakpoint->class
@@ -52,7 +58,7 @@
 
 (defn font->class
   [font]
-  {:pre [(s/valid? ::font font)]}
+  {:pre [(s/valid? ::size font)]}
   (if (map? font)
     (str/join " " (map breakpoint-size->class font))
     (size->class font)))
