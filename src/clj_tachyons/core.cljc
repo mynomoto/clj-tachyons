@@ -1,8 +1,6 @@
-(ns clj-tachyons.core
-  (:require
-    [clojure.spec :as s]))
+(ns clj-tachyons.core)
 
-(s/def ::valid-classes
+(def valid?
   #{:absolute
     :absolute--fill
     :absolute--fill-l
@@ -2161,4 +2159,7 @@
     :z-max
     :z-unset})
 
-(s/valid? ::valid-classes :z-0)
+(defn valid!
+  [tachyons-class]
+  {:pre [(keyword? tachyons-class)]}
+  (or (valid? tachyons-class) (throw (js/Error. (str "Invalid tachyons-class: " (name tachyons-class))))))

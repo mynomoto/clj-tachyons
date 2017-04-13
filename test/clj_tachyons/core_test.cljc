@@ -3,5 +3,11 @@
             [clj-tachyons.core :as t]))
 
 (deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 0))))
+  (testing "valid?"
+    (is (t/valid? :absolute))
+    (is (not (t/valid? :abslute)))))
+
+(deftest a-test
+  (testing "valid!"
+    (is (t/valid! :absolute))
+    (is (thrown? js/Error (t/valid! :abslute)))))
