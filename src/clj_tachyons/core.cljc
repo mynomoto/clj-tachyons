@@ -346,7 +346,6 @@
     :bt-l
     :bt-m
     :bt-ns
-    :button-reset::-moz-focus-inner
     :bw0
     :bw0-l
     :bw0-m
@@ -936,7 +935,6 @@
     :inline-flex-m
     :inline-flex-ns
     :input-reset
-    :input-reset::-moz-focus-inner
     :items-baseline
     :items-baseline-l
     :items-baseline-m
@@ -1919,9 +1917,6 @@
     :shadow-5-m
     :shadow-5-ns
     :shadow-hover
-    :shadow-hover::after
-    :shadow-hover:focus::after
-    :shadow-hover:hover::after
     :silver
     :small-caps
     :small-caps-l
@@ -1935,12 +1930,12 @@
     :strike-l
     :strike-m
     :strike-ns
-    :stripe-dark:nth-child(odd)
-    :stripe-light:nth-child(odd)
-    :striped--light-gray:nth-child(odd)
-    :striped--light-silver:nth-child(odd)
-    :striped--moon-gray:nth-child(odd)
-    :striped--near-white:nth-child(odd)
+    :stripe-dark
+    :stripe-light
+    :striped--light-gray
+    :striped--light-silver
+    :striped--moon-gray
+    :striped--near-white
     :system-sans-serif
     :system-serif
     :tc
@@ -2165,3 +2160,5 @@
     :z-initial
     :z-max
     :z-unset})
+
+(s/valid? ::valid-classes :z-0)
