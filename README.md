@@ -4,20 +4,24 @@ A Clojure(Script)? library designed to validate Tachyons configuration and gener
 
 ## Usage
 
+Add to your dependencies:
+
+[benefactor "0.1.0"]
+
 ```clj
 (ns my.app
-  (:require [clj-tachyons.core :as t]))
+  (:require [clj-tachyons.core :as tachyons]))
 
 ;; Using a set
-(t/generate-class #{:white :z-0})
+(tachyons/generate-class #{:white :z-0})
 ;; "white z-0"
 
 ;; Using a vector
-(t/generate-class [:white :z-0])
+(tachyons/generate-class [:white :z-0])
 ;; "white z-0"
 
 ;; Invalid classes throw
-(t/generate-class [:z-6])
+(tachyons/generate-class [:z-6])
 ;; Error: Invalid tachyons-class: z-6
 ```
 

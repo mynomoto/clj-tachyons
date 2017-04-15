@@ -8,12 +8,13 @@
 
 (task-options!
   pom {:project 'clj-tachyons
-       :version "0.1.0-SNAPSHOT"
+       :version "0.1.0"
        :description "Tachyons for Clojure(Script)?"
        :url "http://tachyons.io"
        :scm {:url "https://github.com/mynomoto/clj-tachyons"}
        :license {"Eclipse Public License"
-                 "http://www.eclipse.org/legal/epl-v10.html"}})
+                 "http://www.eclipse.org/legal/epl-v10.html"}}
+  push {:repo "deploy-clojars"})
 
 (ns-unmap *ns* 'test)
 
