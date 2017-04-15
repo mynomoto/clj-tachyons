@@ -1,4 +1,5 @@
-(ns clj-tachyons.core)
+(ns clj-tachyons.core
+  (:require [clojure.string :as str]))
 
 (def valid?
   #{:absolute
@@ -2163,3 +2164,12 @@
   [tachyons-class]
   {:pre [(keyword? tachyons-class)]}
   (or (valid? tachyons-class) (throw (js/Error. (str "Invalid tachyons-class: " (name tachyons-class))))))
+
+(defn generate-class
+  [tachyons-class-coll]
+  (->> tachyons-class-coll
+       (remove nil?)
+       (map valid!)
+       (map name)
+       distinct
+       (str/join " ")))
